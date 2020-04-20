@@ -2,6 +2,7 @@ package br.com.jvmacedo.conversormoedas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.mViewHolder.textEuro.setText("");
     }
 
+
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_calculate){
@@ -44,6 +46,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 /* Notifications */
                 Toast.makeText(this, this.getString(R.string.informe_valor), Toast.LENGTH_LONG).show();
             } else {
+
+                Double real = Double.valueOf(value);
+
+                this.mViewHolder.textDollar.setText(String.format("%.2f", (real / 4)));
+                this.mViewHolder.textEuro.setText(String.format("%.2f", (real / 5)));
+
             }
         }
     }
